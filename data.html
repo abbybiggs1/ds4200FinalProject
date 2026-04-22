@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data – Consumer Shopping Behavioral Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 860px;
+            margin: 40px auto;
+            padding: 0 24px;
+            background: #f8f7ff;
+            color: #333;
+        }
+
+        h1 {
+            color: #4f46e5;
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            color: #6366f1;
+            font-size: 18px;
+            margin-top: 32px;
+        }
+
+        p, li {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+
+        .stat-row {
+            display: flex;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #ede9fe;
+            border-radius: 12px;
+            padding: 20px 24px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+
+        .stat-card .label {
+            font-size: 13px;
+            color: #6366f1;
+            margin-top: 4px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: #ede9fe;
+            color: #4f46e5;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: #ede9fe;
+            color: #4f46e5;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin: 24px 0;
+            display: inline-block;
+        }
+        .btn:hover { background: #ddd6fe; }
+        .btn:active { transform: scale(0.97); }
+
+        /* ── Figure section styles ── */
+        .figure-block {
+            margin: 28px 0;
+            background: #ffffff;
+            border: 1px solid #e0ddf7;
+            border-radius: 14px;
+            padding: 20px 24px;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.07);
+        }
+
+        .figure-block h3 {
+            color: #4f46e5;
+            font-size: 15px;
+            margin: 0 0 6px 0;
+        }
+
+        .figure-block p.fig-caption {
+            font-size: 13px;
+            color: #777;
+            margin: 0 0 14px 0;
+        }
+
+        .figure-block iframe {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* ── Treemap styles ── */
+        #treemap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        #treemap svg {
+            display: block;
+        }
+
+        #treemap-tooltip {
+            position: fixed;
+            background: rgba(30, 20, 60, 0.92);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            z-index: 999;
+        }
+
+                /* ── Navigation bar ── */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 6px 10px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .nav-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        .nav-sep {
+            color: #d1d5db;
+            font-size: 14px;
+            user-select: none;
+        }
+
+        .nav-link {
+            font-size: 13px;
+            font-weight: 500;
+            color: #6b7280;
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 8px;
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: #f3f4f6;
+            color: #111827;
+            text-decoration: none;
+        }
+
+        .nav-link.active {
+            background: #ede9fe;
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <span class="nav-title">DS4200</span>
+        <span class="nav-sep">|</span>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="data_info.html">About our data</a>
+        <a class="nav-link active" href="data.html">Visualizations</a>
+        <a class="nav-link" href="conclusion.html">Conclusion</a>
+        <a class="nav-link" href="about.html">Contact us</a>
+    </nav>
+
+    <!-- ── Figures ── -->
+    <h2>Figures</h2>
+
+    <div class="figure-block">
+        <h3>Figure 1 — Purchase Amount by Category and Gender</h3>
+        <p class="fig-caption">Box plot comparing purchase amount distributions across clothing categories, split by gender.</p>
+        <iframe src="fig_boxplot.html" height="480" title="Box plot: Purchase Amount by Category and Gender"></iframe>
+        <h3>How to read the figure</h3>
+        <p class="fig-caption">This figure uses the x axis to represent category (Clothing, Accesories, Footwear, Outerwear), and the y axis represents the purchase amount in USD. The box plot is split by gender to examine whether men or women generally spend more money in any of the categories. You can hover over the plots to get more specific information on quartiles, medians, and mins. You can also click on either male or female to just observe purchase amounts for one gender.</p>
+        <h3>Interpretation</h3>
+        <p class="fig-caption">This figure shows minimal variation between men and women in terms of median purchase amount across categories. In addition, purchase amounts tend to be similar for all four categories.</p>
+    </div>
+
+    <div class="figure-block">
+        <h3>Figure 2 — Purchase Breakdown by Gender and Category</h3>
+        <p class="fig-caption">Treemap showing purchase count and amount (USD) per gender and category. Hover over a tile for details.</p>
+        <div id="treemap"></div>
+        <div id="treemap-tooltip" style="
+            position: absolute;
+            background: rgba(0,0,0,0.75);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+        "></div>
+        <div id="treemap" style="position: relative;"></div>
+        <h3>How to read the figure</h3>
+        <p class="fig-caption">In this visualization, we used a tree map to show purchase count and total spend per gender and category. These were the four highest spend categories for both genders (Clothing, Accessories, Footwear, Outerwear). The size of the treemap blocks are based on purchase count, and the hover tool displays the total spend (USD) per category, per gender.</p>
+        <h3>Interpretation</h3>
+        <p class="fig-caption">We see that men tend to purchase twice as frequently as women, we also see that their total purchase amounts double as well. Both genders tend to spend the most on clothing, then accessories, then footwear, and lastly outerwear. We were surprised by this data, and were expecting the results to be flipped by gender. </p>
+    </div>
+
+    <div class="figure-block">
+        <h3>Figure 3 — Item Type Purchased by Season</h3>
+        <p class="fig-caption">Stacked bar chart showing how item purchase frequency varies across the four seasons.</p>
+        <iframe src="fig_bar_season.html" height="630" title="Bar chart: Items Purchased by Season"></iframe>
+        <h3>How to read the figure</h3>
+        <p class="fig-caption">This is a static stacked bar chart showing the frequency of item type purchased in each season from Spring to Winter. The item type is encoded by color as shown on the legend. Use "Shift + Click" to highlight multiple items at once.</p>
+        <h3>Interpretation</h3>
+        <p class="fig-caption">While there were no large differences between item type purchased across seasons we did notice slight differences in a few items. For example jackets were purchased more in the Fall, which could suggest that consumers are purchasing jackets at a higher rate because of the cold months that are approaching. Additionally sweaters were purchased less in the summer, which may suggest that there may be a lower demand for layers as the weather starts to warm up.</p>
+    </div>
+
+    <div class="figure-block">
+        <h3>Figure 4 — Median Purchase Amount by State</h3>
+        <p class="fig-caption">Choropleth map of the United States displaying median purchase amount per state.</p>
+        <iframe src="fig_map.html" height="360" title="Map: Median Purchase Amount by State"></iframe>
+        <h3>How to read the figure</h3>
+        <p class="fig-caption">This is an interactive choropleth map of the US with a tool tip feature. The saturation of the color indicates the median purchase amount in USD for each of the states. Hover over each state to see their names and their median purchase amounts. </p>
+        <h3>Interpretation</h3>
+        <p class="fig-caption">Overall there were no trends with certain regions (eg. East coast vs West coast) having certain types of purchasing patterns. However we noticed that the states with the highest median purchasing amounts were Alaska ($68.50), Arizona ($68.00), and Pennsylvania ($70.00) and the states with the lowest purchasing amounts were Colorado ($51.00), Connecticut ($48.50), Kansas ($50.00), and New Jersey ($51.00).</p>
+    </div>
+
+    <div class="figure-block">
+        <h3>Figure 5 — Median Purchase Amount by Age Group and Payment Method</h3>
+        <p class="fig-caption">Interactive bar and line chart. Click a payment method in the legend to highlight it.</p>
+        <iframe src="fig_age_payment.html" height="700" title="Chart: Purchase Amount by Age Group and Payment Method"></iframe>
+        <h3>How to read the figure</h3>
+        <p class="fig-caption">Here, we are looking at an interactive bar and line chart, with bins of age groups on the x axis, and median purchase amount on the y axis. We also included a tool tip to observe payment method trends. We were curious to see if certain age groups use a payment method more frequently, or if purchase amount might predict payment methods (Bank Transfer, Cash, Credit Card, Debit Card, PayPal, Venmo). You can click on each payment method to highlight the data individually.</p>
+        <h3>Interpretation</h3>
+        <p class="fig-caption">Overall, there doesn’t seem to seem to be any significant differences in payment methods for different purchase amounts. We also don’t see any significant changes in payment method by age, however, people 18-25 do tend to use debit cards slightly more than the other groups, and people in higher age groups (56 and up), tend to use Venmo less than the other groups. Suggesting that they use technology slightly less for purchasing than other groups. </p>
+    </div>
+
+
+
+    <button class="btn" id="backButton">← Back to Home</button>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="treemap.js"></script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+</html>

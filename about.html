@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 24px;
+            background: #f8f7ff;
+            color: #333;
+        }
+
+        h1 {
+            color: #4f46e5;
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            color: #6366f1;
+            font-size: 18px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            background: #ede9fe;
+            color: #4f46e5;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin: 16px 0;
+            display: inline-block;
+        }
+        .btn:hover { background: #ddd6fe; }
+        .btn:active { transform: scale(0.97); }
+
+        .contact-card {
+            background: #ede9fe;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 12px 0;
+        }
+
+        .contact-card h3 {
+            color: #4f46e5;
+            margin: 0 0 6px 0;
+            font-size: 16px;
+        }
+
+        .contact-card a {
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .contact-card a:hover { text-decoration: underline; }
+
+        .team-photo {
+            width: 70%;
+            border-radius: 12px;
+            margin: 16px 0 24px 0;
+            object-fit: cover;
+        }
+                /* ── Navigation bar ── */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 6px 10px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .nav-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        .nav-sep {
+            color: #d1d5db;
+            font-size: 14px;
+            user-select: none;
+        }
+
+        .nav-link {
+            font-size: 13px;
+            font-weight: 500;
+            color: #6b7280;
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 8px;
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: #f3f4f6;
+            color: #111827;
+            text-decoration: none;
+        }
+
+        .nav-link.active {
+            background: #ede9fe;
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body>
+
+     <nav class="nav-bar">
+        <span class="nav-title">DS4200</span>
+        <span class="nav-sep">|</span>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="data_info.html">About our data</a>
+        <a class="nav-link" href="data.html">Visualizations</a>
+        <a class="nav-link" href="conclusion.html">Conclusion</a>
+        <a class="nav-link active" href="about.html">Contact us</a>
+    </nav>
+
+    <h1>Contact Us</h1>
+
+    <img src="us.jpeg" alt="Our team" class="team-photo">
+
+    <div class="contact-card">
+        <h3>Abigail Biggs</h3>
+        <a href="mailto:biggs.ab@northeastern.edu">biggs.ab@northeastern.edu</a>
+    </div>
+
+    <div class="contact-card">
+        <h3>Eunchae Hong</h3>
+        <a href="mailto:hong.eunc@northeastern.edu">hong.eunc@northeastern.edu</a>
+    </div>
+
+    <div class="contact-card">
+        <h3>Jane Meng</h3>
+        <a href="mailto:meng.ja@northeastern.edu">meng.ja@northeastern.edu</a>
+    </div>
+
+    <button class="btn" id="backButton">← Back to Home</button>
+    <script>
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+</html>

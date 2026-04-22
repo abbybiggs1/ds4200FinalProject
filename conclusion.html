@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusion – Consumer Shopping Behavioral Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Sans', 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 24px 60px;
+            background: #f8f7ff;
+            color: #333;
+        }
+
+        /* ── Nav (matches shared style.css) ── */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 6px 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .nav-title { font-size: 13px; font-weight: 600; color: #4f46e5; margin-right: 8px; white-space: nowrap; }
+        .nav-sep { color: #d1d5db; font-size: 14px; user-select: none; }
+        .nav-link { font-size: 13px; font-weight: 500; color: #6b7280; text-decoration: none; padding: 5px 12px; border-radius: 8px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+        .nav-link:hover { background: #f3f4f6; color: #111827; text-decoration: none; }
+        .nav-link.active { background: #ede9fe; color: #4f46e5; }
+
+        /* ── Header ── */
+        .page-header {
+            margin-bottom: 48px;
+        }
+
+        .page-header .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #818cf8;
+            margin-bottom: 10px;
+        }
+
+        .page-header h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: #1e1b4b;
+            line-height: 1.15;
+            margin: 0 0 16px;
+        }
+
+        .page-header h1 em {
+            font-style: italic;
+            color: #4f46e5;
+        }
+
+        .page-header .subtitle {
+            font-size: 15px;
+            color: #6b7280;
+            max-width: 520px;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, #c7d2fe, transparent);
+            margin: 0 0 40px;
+        }
+
+        .insights-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .insight-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 35px 35px;
+            position: relative;
+            transition: transform 0.18s, box-shadow 0.18s;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99,102,241,0.1);
+        }
+
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            border-radius: 3px 0 0 3px;
+            background: var(--accent);
+        }
+
+        .insight-card:nth-child(1) { --accent: #6366f1; animation-delay: 0.05s; }
+        .insight-card:nth-child(2) { --accent: #8b5cf6; animation-delay: 0.1s; }
+        .insight-card:nth-child(3) { --accent: #a78bfa; animation-delay: 0.15s; }
+        .insight-card:nth-child(4) { --accent: #c084fc; animation-delay: 0.2s; }
+        .insight-card:nth-child(5) { --accent: #e879f9; animation-delay: 0.25s; }
+
+        .insight-icon {
+            width: 60px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            background: #f5f3ff;
+        }
+
+        .insight-body {
+            flex: 1;
+        }
+
+        .insight-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .insight-text {
+            font-size: 15px;
+            color: #1f2937;
+            line-height: 1.8;
+            margin: 0 0 4px;
+        }
+
+        .btn {
+            background: #ede9fe;
+            color: #4f46e5;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: inline-block;
+            font-family: inherit;
+        }
+        .btn:hover { background: #ddd6fe; }
+        .btn:active { transform: scale(0.97); }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <span class="nav-title">DS4200</span>
+        <span class="nav-sep">|</span>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="data_info.html">About our data</a>
+        <a class="nav-link" href="data.html">Visualizations</a>
+        <a class="nav-link active" href="conclusion.html">Conclusion</a>
+        <a class="nav-link" href="about.html">Contact us</a>
+    </nav>
+
+    <header class="page-header">
+        <p class="eyebrow">DS4200 Final Project</p>
+        <h1>Key <em>Takeaways</em></h1>
+        <p class="subtitle">What our analysis of consumer shopping behavior reveals — and what it means for retailers.</p>
+    </header>
+
+    <div class="divider"></div>
+
+    <div class="insights-grid">
+
+        <div class="insight-card">
+            <div class="insight-icon">📦</div>
+            <div class="insight-body">
+                <p class="insight-label">Inventory</p>
+                <p class="insight-text">Stock up on inventories during the prior season to meet consumer demand <br>
+                    before peak purchase periods.</p>
+            </div>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">📍</div>
+            <div class="insight-body">
+                <p class="insight-label">Regional Strategy</p>
+                <p class="insight-text">Push marketing strategies featuring pricier items in states with high median purchase <br> amounts — particularly Alaska, Pennsylvania, and Arizona.</p>
+            </div>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">💳</div>
+            <div class="insight-body">
+                <p class="insight-label">Payments</p>
+                <p class="insight-text">Offer all types of payment methods across all age ranges to reduce friction at checkout.</p>
+            </div>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">👥</div>
+            <div class="insight-body">
+                <p class="insight-label">Demographics</p>
+                <p class="insight-text">Push marketing toward women, who are currently purchasing less despite being a <br> large segment of the customer base.</p>
+            </div>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-icon">👗</div>
+            <div class="insight-body">
+                <p class="insight-label">Category Focus</p>
+                <p class="insight-text">Prioritize stocking clothing, as it consistently represents the highest spend category <br> across demographics.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn" id="backButton">← Back to Home</button>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/us-10m.json", "format": {"feature": "states", "type": "topojson"}}, "mark": {"type": "geoshape"}, "encoding": {"color": {"field": "median_purchase", "scale": {"scheme": "blues"}, "title": "Median Purchase (USD)", "type": "quantitative"}, "tooltip": [{"field": "state", "type": "nominal"}, {"field": "median_purchase", "type": "quantitative"}]}, "height": 300, "projection": {"type": "albersUsa"}, "title": "Median Purchase Amount by State", "transform": [{"lookup": "id", "from": {"data": {"name": "data-93e3806c3f5e57f607714dbd157249be"}, "key": "id", "fields": ["median_purchase", "state"]}}], "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-93e3806c3f5e57f607714dbd157249be": [{"state": "Alabama", "median_purchase": 56.0, "id": 1}, {"state": "Alaska", "median_purchase": 68.5, "id": 2}, {"state": "Arizona", "median_purchase": 68.0, "id": 4}, {"state": "Arkansas", "median_purchase": 58.0, "id": 5}, {"state": "California", "median_purchase": 57.0, "id": 6}, {"state": "Colorado", "median_purchase": 51.0, "id": 8}, {"state": "Connecticut", "median_purchase": 48.5, "id": 9}, {"state": "Delaware", "median_purchase": 52.5, "id": 10}, {"state": "Florida", "median_purchase": 56.0, "id": 12}, {"state": "Georgia", "median_purchase": 62.0, "id": 13}, {"state": "Hawaii", "median_purchase": 55.0, "id": 15}, {"state": "Idaho", "median_purchase": 62.0, "id": 16}, {"state": "Illinois", "median_purchase": 65.0, "id": 17}, {"state": "Indiana", "median_purchase": 60.0, "id": 18}, {"state": "Iowa", "median_purchase": 60.0, "id": 19}, {"state": "Kansas", "median_purchase": 50.0, "id": 20}, {"state": "Kentucky", "median_purchase": 53.0, "id": 21}, {"state": "Louisiana", "median_purchase": 55.5, "id": 22}, {"state": "Maine", "median_purchase": 57.0, "id": 23}, {"state": "Maryland", "median_purchase": 52.0, "id": 24}, {"state": "Massachusetts", "median_purchase": 64.0, "id": 25}, {"state": "Michigan", "median_purchase": 63.0, "id": 26}, {"state": "Minnesota", "median_purchase": 53.0, "id": 27}, {"state": "Mississippi", "median_purchase": 64.0, "id": 28}, {"state": "Missouri", "median_purchase": 61.0, "id": 29}, {"state": "Montana", "median_purchase": 64.0, "id": 30}, {"state": "Nebraska", "median_purchase": 58.0, "id": 31}, {"state": "Nevada", "median_purchase": 66.0, "id": 32}, {"state": "New Hampshire", "median_purchase": 59.0, "id": 33}, {"state": "New Jersey", "median_purchase": 51.0, "id": 34}, {"state": "New Mexico", "median_purchase": 63.0, "id": 35}, {"state": "New York", "median_purchase": 62.0, "id": 36}, {"state": "North Carolina", "median_purchase": 62.5, "id": 37}, {"state": "North Dakota", "median_purchase": 64.0, "id": 38}, {"state": "Ohio", "median_purchase": 66.0, "id": 39}, {"state": "Oklahoma", "median_purchase": 60.0, "id": 40}, {"state": "Oregon", "median_purchase": 54.0, "id": 41}, {"state": "Pennsylvania", "median_purchase": 70.0, "id": 42}, {"state": "Rhode Island", "median_purchase": 63.0, "id": 44}, {"state": "South Carolina", "median_purchase": 59.0, "id": 45}, {"state": "South Dakota", "median_purchase": 62.0, "id": 46}, {"state": "Tennessee", "median_purchase": 61.0, "id": 47}, {"state": "Texas", "median_purchase": 62.0, "id": 48}, {"state": "Utah", "median_purchase": 65.0, "id": 49}, {"state": "Vermont", "median_purchase": 54.0, "id": 50}, {"state": "Virginia", "median_purchase": 62.0, "id": 51}, {"state": "Washington", "median_purchase": 63.0, "id": 53}, {"state": "West Virginia", "median_purchase": 66.0, "id": 54}, {"state": "Wisconsin", "median_purchase": 55.0, "id": 55}, {"state": "Wyoming", "median_purchase": 60.0, "id": 56}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
